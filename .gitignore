@@ -23,3 +23,19 @@ dist-ssr
 *.sln
 *.sw?
 dist/
+
+# ─── Assets: protect the repo from the 3.4 GB raw/unused tree ─────────────────
+# The runtime-used asset set (~604 curated files, each < 100 MB) is ALREADY tracked
+# and STAYS in git — .gitignore never untracks already-tracked files. These rules
+# only stop the multi-GB UNTRACKED tree from being staged via `git add .`.
+# To add a NEW used asset on purpose:  git add -f <path>   (or add a ! negation here).
+# See GIT_ASSET_STRATEGY.md.
+#
+# Raw / large source formats anywhere (never loaded at runtime):
+*.bin
+*.fbx
+*.zip
+# The asset working tree (curated used files already committed remain tracked):
+/public/assets/
+# Scratch / source models outside the runtime tree:
+/src/assets/
