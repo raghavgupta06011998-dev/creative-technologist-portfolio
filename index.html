@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>raghav-portfolio</title>
+    <style>
+      /* ───── Skill proximity overlay ───────────────────────────────────
+         Shown when the player walks close to any skill plaque, tool
+         stone, campfire, or exit gate inside the Skills Forest.
+         Driven by src/world/village/skills/skillTriggers.js — JS only
+         toggles the `.visible` class; everything else is CSS so there's
+         no per-frame style work. */
+      #skill-overlay {
+        position: fixed;
+        bottom: 48px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 480px;
+        padding: 14px 22px 16px;
+        background: rgba(40, 25, 15, 0.86);
+        border: 1px solid #c89a78;
+        border-radius: 4px;
+        color: #f5deb3;
+        font-family: Georgia, "Times New Roman", serif;
+        text-align: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.32s ease;
+        z-index: 100;
+      }
+      #skill-overlay.visible {
+        opacity: 1;
+      }
+      #skill-overlay-title {
+        font-weight: bold;
+        font-size: 19px;
+        letter-spacing: 0.02em;
+        margin-bottom: 4px;
+      }
+      #skill-overlay-text {
+        font-style: italic;
+        font-size: 15px;
+        line-height: 1.45;
+        opacity: 0.92;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- Skill proximity overlay (populated by skillTriggers.js) -->
+    <div id="skill-overlay" aria-hidden="true">
+      <div id="skill-overlay-title"></div>
+      <div id="skill-overlay-text"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
